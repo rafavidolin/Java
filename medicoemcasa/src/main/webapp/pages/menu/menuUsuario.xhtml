@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>MENU USUÁRIO</title>
+	<style type="text/css">
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+.header {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+
+.title {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.bottom {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	text-align: center;
+	vertical-align: middle;
+	color: #8E969D;
+}
+
+.info {
+	color: blue;
+}
+
+.error {
+	color: red;
+}
+</style>
+</h:head>
+<h:body bgcolor="#FFFFCC">
+	<table align="center" cellpadding="5" cellspacing="0" border="0"
+		width="90%">
+		<tbody>
+			<!-- Cabeçalho -->
+			<tr>
+				<td class="header" height="42" align="left" valign="middle"
+					width="100%" bgcolor="#CC9966" style="color: white">
+					<center>MENU USUÁRIO</center>
+				</td>
+			</tr>
+
+			<!-- Linha de Separação -->
+			<tr>
+				<td height="1" width="100%" bgcolor="#000000"></td>
+			</tr>
+
+			<!-- Corpo da página -->
+			<tr>
+
+			</tr>
+			<tr>
+
+				<td width="100%" align="left"><h:form id="formDados">
+						<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+						<p:panel header="Login" widgetVar="dlg" resizable="false">
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<h:outputLabel for="username" value="Nome" />
+								<p:inputText id="username"
+									value="#{loginBeanVeterinario.usuario.nome}" required="true"
+									label="username" />
+
+								<h:outputLabel for="email" value="Email" />
+								<p:inputText id="email"
+									value="#{loginBeanVeterinario.usuario.email}" required="true"
+									label="username" />
+
+								<h:outputLabel for="endereco" value="Endereco" />
+								<p:inputText id="endereco"
+									value="#{loginBeanVeterinario.usuario.endereco}"
+									required="true" label="endereco" />
+
+								<h:outputLabel for="cpf" value="CPF" />
+								<p:inputText id="cpf"
+									value="#{loginBeanVeterinario.usuario.cpf}" disabled="true"
+									required="true" label="username" />
+
+								<h:outputLabel for="dt" value="Data De Nascimento" />
+								<p:inputText id="dt"
+									value="#{loginBeanVeterinario.usuario.dataNascimento}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</p:inputText>
+
+								<h:outputLabel for="ddd" value="DDD" />
+								<p:inputMask id="telefone"
+									value="#{loginBeanVeterinario.usuario.ddd}" size="1" />
+
+								<h:outputLabel for="telefone" value="Telefone" />
+								<p:inputMask id="ddd"
+									value="#{loginBeanVeterinario.usuario.telefone}" />
+
+
+								<f:facet name="footer">
+									<p:commandButton value="Editar" update="growl"
+										action="#{loginBeanVeterinario.editar()}" />
+
+									<p:commandButton value="Alterar Senha" update="growl"
+										action="/pages/menu/alterarSenhaUsuario" />
+
+									<p:commandButton value="Excluir Cadastro" update="growl"
+										action="#{loginBeanVeterinario.excluirUsuario()}" />
+
+									<p:commandButton value="Listar Veterinarios" update="growl"
+										action="/pages/menu/pesquisaVeterinario" />
+
+									<p:commandButton value="Sair" update="growl"
+										action="#{loginBeanVeterinario.efetuarLogout()}" />
+
+								</f:facet>
+							</h:panelGrid>
+						</p:panel>
+
+					</h:form></td>
+			</tr>
+
+			<!-- Linha de Separação -->
+			<tr>
+				<td height="1" width="100%" bgcolor="#000000"></td>
+			</tr>
+		</tbody>
+	</table>
+
+</h:body>
+</html>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+		<title>MENU VETERINÁRIO</title>
+		<style type="text/css">
+			body {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-size: 14px;
+			}
+			.header {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-size: 18px;
+			}
+			.title {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-weight:bold;
+				  font-size: 16px;
+			}
+			.bottom {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-size: 9px;
+				  text-align: center;
+				  vertical-align: middle;
+				  color: #8E969D;
+			}
+			.info {
+			     color: blue;
+			}
+			.error {
+			     color: red;
+			}				  
+		</style>
+	</h:head> 
+	<h:body bgcolor="#FFFFCC"> 
+		<table align="center" cellpadding="5" cellspacing="0" border="0" width="90%">
+		<tbody>
+			<!-- Cabeçalho -->
+			<tr>
+				<td class="header" height="42" align="left" valign="middle" width="100%" bgcolor="#CC9966" style="color: white">
+				<center>MENU VETERINÁRIO</center>
+				</td>
+			</tr>
+
+			<!-- Linha de Separação -->
+			<tr>
+				<td height="1" width="100%" bgcolor="#000000"></td>
+			</tr>	
+		
+			<!-- Corpo da página -->
+			<tr>
+				
+			</tr>
+			<tr>
+				<td width="100%" align="left">
+					<h:form id="formDados">
+						<table width="100%" align="left" cellpadding="5" cellspacing="0" border="0">
+							<tbody>
+							
+							
+								<tr>
+									<td align="right" valign="middle" width="20%">
+										NOME:
+									</td>
+									<td align="left" valign="middle">
+										<h:inputText value="#{loginBeanVeterinario.veterinario.nome}" size="40"
+										             required="true" 
+										             validatorMessage="Nome deve ter no máximo 50 caracteres"
+										             requiredMessage="Nome é obrigatório">
+										    <f:validateLength minimum="1" maximum="50" />
+										</h:inputText>									
+										&nbsp;									
+     								    
+									</td>
+								</tr>
+								<tr>
+									<td align="right" valign="middle">
+										E-MAIL:
+									</td>
+									<td align="left" valign="middle">
+										<h:inputText value="#{loginBeanVeterinario.veterinario.email}" size="40"
+										             required="true" 
+										             validatorMessage="E-mail deve ter no máximo 50 caracteres"
+										             requiredMessage="E-mail é obrigatório">
+										    <f:validateLength minimum="1" maximum="50"/>
+										</h:inputText>									
+										&nbsp;									
+     								    
+									</td>
+								</tr>
+								
+									<tr>
+									<td align="right" valign="middle">
+										ENDEREÇO:
+									</td>
+									<td align="left" valign="middle">
+										<h:inputText value="#{loginBeanVeterinario.veterinario.endereco}" size="40"
+										             required="true" 
+										             validatorMessage="endereço deve ter no máximo 80 caracteres">
+										    <f:validateLength minimum="0" maximum="100"/>
+										</h:inputText>									
+										&nbsp;									
+     								    
+									</td>
+								</tr>	
+								
+								
+								<tr>
+									<td align="right" valign="middle">
+										CPF:
+									</td>
+									<td align="left" valign="middle">
+										<h:inputText disabled="true" value="#{loginBeanVeterinario.veterinario.cpf}" size="20"
+										             required="true" 
+										             validatorMessage="CPF deve ter no máximo 11 caracteres">
+										    <f:validateLength minimum="0" maximum="100"/>
+										</h:inputText>									
+										&nbsp;									
+     								    
+									</td>
+								</tr>
+								
+								
+								
+								<tr>
+									<td align="right" valign="middle">
+										CRMV:
+									</td>
+									<td align="left" valign="middle">
+										<h:inputText value="#{loginBeanVeterinario.veterinario.crmv}" size="20"
+										             required="true" 
+										             validatorMessage="Crmv deve ter no máximo 11 caracteres">
+										    <f:validateLength minimum="0" maximum="100"/>
+										</h:inputText>									
+										&nbsp;									
+     								    
+									</td>
+								</tr>				
+								
+								<tr>
+									<td align="right" valign="middle">
+										DATA DE NASCIMENTO:
+									</td>
+									<td align="left" valign="middle">
+										<h:inputText value="#{loginBeanVeterinario.veterinario.dataNascimento}" size="20"
+													 required="true" 
+													 requiredMessage="Data de nascimento é obrigatória"
+										             converterMessage="A data deve estar no formato dd/MM/aaaa">
+							    		    <f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:inputText>
+										&nbsp;     								    
+									</td>
+								</tr>								
+
+
+		                      	<tr>
+									<td align="right" valign="middle">
+										TELEFONE :
+									</td>
+									<td align="left" valign="middle">
+										<h:inputText value="#{loginBeanVeterinario.veterinario.ddd}" size="2"
+										             required="true" 
+										             validatorMessage="DDD deve ter no máximo 2 dígitos"
+										             requiredMessage="DDD é obrigatório">
+										    <f:validateLongRange minimum="0" maximum="99"/>
+										</h:inputText>
+										&nbsp;									
+										<h:inputText value="#{loginBeanVeterinario.veterinario.telefone}" size="13"
+										             required="true" 
+										             validatorMessage="Telefone deve ter no máximo 13 dígitos"
+										             requiredMessage="Telefone é obrigatório">
+										    <f:validateLongRange minimum="0" maximum="9999999999999"/>
+										</h:inputText>
+										&nbsp;	    						
+									</td>
+								</tr>
+
+													
+																				
+								<tr>
+									<td align="center" valign="middle" colspan="2">
+		                             	<h:commandButton style="background-color:black; color:white; border-color:black" value="EDITAR" action="#{loginBeanVeterinario.editar}" />
+										&nbsp;									
+										<h:commandButton style="background-color:black; color:white; border-color:black" value="ALTERAR SENHA" action="/pages/menu/alterarSenha"/>
+										&nbsp;
+										<h:commandButton style="background-color:black; color:white; border-color:black" value="EXCLUIR CADASTRO" action="#{loginBeanVeterinario.excluirVeterinario()}"/>
+										&nbsp;		
+										<h:commandButton style="background-color:black; color:white; border-color:black" value="SAIR" immediate="true" action="#{loginBeanVeterinario.efetuarLogout()}"/>
+										&nbsp;
+										
+										<h:messages /> 	
+																				
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</h:form>
+				</td>
+			</tr>	
+			
+			<!-- Linha de Separação -->
+			<tr>
+				<td height="1" width="100%" bgcolor="#000000"></td>
+			</tr>	
+		</tbody>
+	</table>
+		
+	</h:body> 
+</html>

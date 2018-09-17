@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+		<title>alterar senha</title>
+		<style type="text/css">
+			body {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-size: 14px;
+			}
+			.header {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-size: 18px;
+			}
+			.title {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-weight:bold;
+				  font-size: 16px;
+			}
+			.bottom {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-size: 9px;
+				  text-align: center;
+				  vertical-align: middle;
+				  color: #8E969D;
+			}
+			.info {
+			     color: blue;
+			}
+			.error {
+			     color: red;
+			}				  
+		</style>
+	</h:head> 
+	<h:body bgcolor="#FFFFCC"> 
+		<table align="center" cellpadding="5" cellspacing="0" border="0" width="90%">
+		<tbody>
+			<!-- Cabeçalho -->
+			<tr>
+				<td class="header" height="42" align="left" valign="middle" width="100%" bgcolor="#CC9966" style="color: white">
+				<center>ALTERAR SENHA</center>
+				</td>
+			</tr>
+
+			<!-- Linha de Separação -->
+			<tr>
+				<td height="1" width="100%" bgcolor="#000000"></td>
+			</tr>	
+		
+			<!-- Corpo da página -->
+			<tr>
+				
+			</tr>
+			<tr>
+				<td width="100%" align="left">
+					<h:form id="formDados">
+						<table width="100%" align="left" cellpadding="5" cellspacing="0" border="0">
+							<tbody>	
+								
+							<tr>
+									<td align="right" valign="middle">
+										Nova Senha :
+									</td>
+									<td align="left" valign="middle">
+										<h:inputSecret value="#{loginBeanVeterinario.usuario.senha}" size="25"
+										             required="true" 
+										             validatorMessage="senha deve ter no máximo  caracteres"
+										             requiredMessage="senha deve ser preenchida"
+										             >
+										    <f:validateLength minimum="0" maximum="100"/>
+										</h:inputSecret>									
+										&nbsp;	
+									</td>
+								</tr>	
+								
+									
+																				
+								<tr>
+									<td align="center" valign="middle" colspan="2">
+		                             	<h:commandButton style="background-color:black; color:white; border-color:black" value="ALTERAR SENHA" action="#{loginBeanVeterinario.alterarSenhaUsuario()}" />
+										&nbsp;									
+											<h:commandButton style="background-color:black; color:white; border-color:black" action="/pages/menu/menuUsuario" immediate="true" value="VOLTAR"/>							
+													
+									 <h:messages /> 								
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</h:form>
+				</td>
+			</tr>	
+			
+			<!-- Linha de Separação -->
+			<tr>
+				<td height="1" width="100%" bgcolor="#000000"></td>
+			</tr>	
+		</tbody>
+	</table>
+		
+	</h:body> 
+</html>
