@@ -30,8 +30,7 @@ public class UsuarioController {
 	public Usuario inserirUsuario(Usuario usuario) {
 		{
 			if (usuario == null)
-				return new Usuario();
-			System.out.println("Tentativa de inserir um usuario nulo");
+				return new Usuario();	
 
 			// Chamando a camada de persistência
 			usuario = usuarioModel.inserirUsuario(usuario);

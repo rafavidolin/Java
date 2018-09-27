@@ -250,7 +250,7 @@ public class LoginBeanVeterinario implements Serializable {
 		// tela
 		if (!contexto.getMessageList().isEmpty()) {
 			contexto.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Preencha todos os campos!", null));
-			return "/pages/login/cadastrarVeterinario";
+			return "/pages/login/cadastrarUsuario";
 		}
 
 		usuario = usuarioController.inserirUsuario(usuario);
@@ -264,14 +264,14 @@ public class LoginBeanVeterinario implements Serializable {
 		} else {
 		}
 		contexto.addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Veterinario Cadastrado com sucesso!", null));
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário Cadastrado com sucesso!", null));
 		System.out.println("Cadastro Contato - Incluir - Saï¿½da   - " + usuario);
 
 		return "/pages/login/cadastrarUsuario";
 	}
 
 	public String editar() {
-		
+		FacesContext contexto = FacesContext.getCurrentInstance();
 		if (veterinarioController.alterarVeterinario(veterinario) != null) {
 			
 			contexto.addMessage(null,
@@ -287,8 +287,6 @@ public class LoginBeanVeterinario implements Serializable {
 		} else {
 			contexto.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Veterinario não alterado!", null));
 		}
-		System.out.println("Cadastro Contato - Alterar - Saï¿½da   - " + veterinario);
-
 		return "/pages/menu/menuVeterinario";
 	}
 
@@ -308,8 +306,6 @@ public class LoginBeanVeterinario implements Serializable {
 		} else {
 			contexto.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario não alterado!", null));
 		}
-		System.out.println("Cadastro Contato - Alterar - Saï¿½da   - " + usuario);
-
 		return "/pages/menu/menuUsuario";
 	}
 
@@ -317,43 +313,34 @@ public class LoginBeanVeterinario implements Serializable {
 		FacesContext contexto = FacesContext.getCurrentInstance();
 
 		if (veterinarioController.excluirVeterinario(veterinario) != null) {
+			
+			this.listaveterinarios = listarTodosVeterinarios();
+			this.veterinario = new Veterinario();
+			this.usuario = new Usuario();		
+			
 			contexto.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Veterinario excluido com sucesso!", null));
-
-			// Acertando o status dos botoes
-			statusCodigo = true;
-			statusConsultar = true;
-			statusIncluir = true;
-			statusAlterar = false;
-			statusExcluir = false;
-			this.listaveterinarios = listarTodosVeterinarios();
-			veterinario = new Veterinario();
 		} else {
 			contexto.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Veterinario não excluido!", null));
-		}
-
+		}				
+		this.veterinario = new Veterinario();
+		this.usuario = new Usuario();
 		return "/pages/login/login";
 	}
+	
 
 	public String excluirUsuario() {
 		FacesContext contexto = FacesContext.getCurrentInstance();
 
 		if (usuarioController.excluirUsuario(usuario) != null) {
+			this.usuario = new Usuario();
 			contexto.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario excluido com sucesso!", null));
-
-			// Acertando o status dos botoes
-			statusCodigo = true;
-			statusConsultar = true;
-			statusIncluir = true;
-			statusAlterar = false;
-			statusExcluir = false;
-
-			usuario = new Usuario();
 		} else {
 			contexto.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario não excluido!", null));
 		}
-
+		this.veterinario = new Veterinario();
+		this.usuario = new Usuario();
 		return "/pages/login/login";
 	}
 

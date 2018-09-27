@@ -1,138 +1,90 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>MENU USU�RIO</title>
-	<style type="text/css">
-body {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 14px;
-}
-
-.header {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 18px;
-}
-
-.title {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 16px;
-}
-
-.bottom {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 9px;
-	text-align: center;
-	vertical-align: middle;
-	color: #8E969D;
-}
-
-.info {
-	color: blue;
-}
-
-.error {
-	color: red;
-}
-</style>
+<p:messages id="messages" />
 </h:head>
-<h:body bgcolor="#FFFFCC">
-	<table align="center" cellpadding="5" cellspacing="0" border="0"
-		width="90%">
-		<tbody>
-			<!-- Cabe�alho -->
-			<tr>
-				<td class="header" height="42" align="left" valign="middle"
-					width="100%" bgcolor="#CC9966" style="color: white">
-					<center>MENU USU�RIO</center>
-				</td>
-			</tr>
+<h:body>
+	<p:tabView style="width:500px;height:430px;margin:auto;">
+		<p:tab title="Menu do Usuário">
 
-			<!-- Linha de Separa��o -->
-			<tr>
-				<td height="1" width="100%" bgcolor="#000000"></td>
-			</tr>
+			<h:form id="form-cadastro">
 
-			<!-- Corpo da p�gina -->
-			<tr>
+				<h:panelGrid columns="2" cellpadding="7">
 
-			</tr>
-			<tr>
+					<p:outputLabel value="Nome" for="inputText-nome" />
+					<p:inputText id="inputText-nome" style="width:300px" maxlength="70"
+						value="#{loginBeanVeterinario.usuario.nome}" required="true"
+						requiredMessage="O nome é de preenchimento obrigatório" />
 
-				<td width="100%" align="left"><h:form id="formDados">
-						<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-						<p:panel header="Login" widgetVar="dlg" resizable="false">
-							<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel value="E-mail" for="inputText-email" />
+					<p:inputText id="inputText-email" style="width:300px"
+						maxlength="70" value="#{loginBeanVeterinario.usuario.email}"
+						required="true"
+						requiredMessage="O E-mail é de preenchimento obrigatório" />
 
-								<h:outputLabel for="username" value="Nome" />
-								<p:inputText id="username"
-									value="#{loginBeanVeterinario.usuario.nome}" required="true"
-									label="username" />
+					<p:outputLabel value="Endereço" for="inputText-endereço" />
+					<p:inputText id="inputText-endereço" style="width:300px"
+						maxlength="70" value="#{loginBeanVeterinario.usuario.endereco}"
+						required="true"
+						requiredMessage="O Endereço é de preenchimento obrigatório" />
 
-								<h:outputLabel for="email" value="Email" />
-								<p:inputText id="email"
-									value="#{loginBeanVeterinario.usuario.email}" required="true"
-									label="username" />
+					<p:outputLabel value="Cpf" for="inputText-cpf" />
+					<p:inputText id="inputText-cpf" style="width:300px" maxlength="70"
+						value="#{loginBeanVeterinario.usuario.cpf}" disabled="true"
+						requiredMessage="O CPF é de preenchimento obrigatório" />
 
-								<h:outputLabel for="endereco" value="Endereco" />
-								<p:inputText id="endereco"
-									value="#{loginBeanVeterinario.usuario.endereco}"
-									required="true" label="endereco" />
+					<p:outputLabel value="DDD" for="inputText-ddd" />
+					<p:inputText id="inputText-ddd" style="width:40px" maxlength="2"
+						value="#{loginBeanVeterinario.usuario.ddd}" required="true"
+						requiredMessage="O DDD é de preenchimento obrigatório" />
 
-								<h:outputLabel for="cpf" value="CPF" />
-								<p:inputText id="cpf"
-									value="#{loginBeanVeterinario.usuario.cpf}" disabled="true"
-									required="true" label="username" />
+					<p:outputLabel value="Telefone" for="inputText-telefone" />
+					<p:inputText id="inputText-telefone" style="width:300px"
+						maxlength="9" value="#{loginBeanVeterinario.usuario.telefone}"
+						required="true"
+						requiredMessage="O Telefone é de preenchimento obrigatório" />
+				</h:panelGrid>
 
-								<h:outputLabel for="dt" value="Data De Nascimento" />
-								<p:inputText id="dt"
-									value="#{loginBeanVeterinario.usuario.dataNascimento}">
-									<f:convertDateTime pattern="dd/MM/yyyy" />
-								</p:inputText>
+				<h:panelGrid columns="4">
+					<p:commandButton value="Editar" update="messages"
+						action="#{loginBeanVeterinario.editarUsuario()}" />
 
-								<h:outputLabel for="ddd" value="DDD" />
-								<p:inputMask id="telefone"
-									value="#{loginBeanVeterinario.usuario.ddd}" size="1" />
+					<p:commandButton value="Alterar Senha" update="messages"
+						action="/pages/menu/alterarSenhaUsuario" />
 
-								<h:outputLabel for="telefone" value="Telefone" />
-								<p:inputMask id="ddd"
-									value="#{loginBeanVeterinario.usuario.telefone}" />
+					<p:commandButton value="Excluir Cadastro"
+						actionListener="#{loginBeanVeterinario.excluirUsuario()}">
+						<p:confirm header="Confirmation"
+							message="Tem certeza que deseja excluir o seu cadastro?"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Yes" type="button"
+							action="#{loginBeanVeterinario.excluirUsuario()}"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="No" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
 
+				</h:panelGrid>
+				<h:panelGrid columns="2">
+					<p:commandButton value="Listar Veterinarios"
+						action="/pages/menu/pesquisaVeterinario" />
+					<p:commandButton value="Sair" update="messages"
+						action="#{loginBeanVeterinario.efetuarLogout()}" />
+				</h:panelGrid>
 
-								<f:facet name="footer">
-									<p:commandButton value="Editar" update="growl"
-										action="#{loginBeanVeterinario.editar()}" />
-
-									<p:commandButton value="Alterar Senha" update="growl"
-										action="/pages/menu/alterarSenhaUsuario" />
-
-									<p:commandButton value="Excluir Cadastro" update="growl"
-										action="#{loginBeanVeterinario.excluirUsuario()}" />
-
-									<p:commandButton value="Listar Veterinarios" update="growl"
-										action="/pages/menu/pesquisaVeterinario" />
-
-									<p:commandButton value="Sair" update="growl"
-										action="#{loginBeanVeterinario.efetuarLogout()}" />
-
-								</f:facet>
-							</h:panelGrid>
-						</p:panel>
-
-					</h:form></td>
-			</tr>
-
-			<!-- Linha de Separa��o -->
-			<tr>
-				<td height="1" width="100%" bgcolor="#000000"></td>
-			</tr>
-		</tbody>
-	</table>
-
+				<p:messages showDetail="true" autoUpdate="true" closable="true"
+					severity="warn" />
+				<p:messages autoUpdate="true" closable="true" severity="error" />
+				<p:messages showDetail="false" autoUpdate="true" closable="true"
+					severity="info" />
+			</h:form>			
+		</p:tab>
+	</p:tabView>
+		
 </h:body>
 </html>

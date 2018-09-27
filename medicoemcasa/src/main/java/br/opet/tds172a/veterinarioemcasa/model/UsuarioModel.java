@@ -29,8 +29,7 @@ public class UsuarioModel {
 		{
 			if (usuario == null)
 				return new Usuario();
-			System.out.println("Tentativa de inserir um usuario nulo");
-
+			
 			// Chamando a camada de persistência
 			usuario = usuarioDAO.inserirUsuario(usuario);
 
